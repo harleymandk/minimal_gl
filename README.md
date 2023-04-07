@@ -23,7 +23,7 @@ A user texture is read and used as a skybox.
 
 # 準備
 
-MinimalGL を利用するには、以下のツールが必要です。
+MinimalGL To use , you need the following tools:
 
 - Microsoft Visual Studio  
 	2019 以降を推奨。
@@ -37,36 +37,36 @@ MinimalGL を利用するには、以下のツールが必要です。
 
 # 使い方
 
-MinimalGL を使った PC 4K Intro 作成の簡単な流れは以下のようになります。
+MinimalGL The simple flow of creating a PC 4K Intro using is as follows.
 
-1. シェーダファイルを用意する  
-	example/ 以下の適当な *.gfx.glsl *.snd.glsl ファイルからコピーしてください。
+1. prepare shader file
+Copy from the appropriate *.gfx.glsl *.snd.glsl file under example/.
 
-2. グラフィクスシェーダファイルを開く  
-	メインウィンドウに \*.gfx.glsl ファイルをドラッグ＆ドロップするか、
-	メニューから [File]→[Open Graphics Shader] を選択し \*.gfx.glsl ファイルを読み込みます。
+2.Open graphics shader file
+Drag and drop the \*.gfx.glsl file to the main window, or
+Select File > Open Graphics Shader from the menu and load the \*.gfx.glsl file.
 
-3. サウンドシェーダファイルを開く  
-	メインウィンドウに \*.snd.glsl ファイルをドラッグ＆ドロップするか、
-	メニューから [File]→[Open Sound Shader] を選択し \*.snd.glsl ファイルを読み込みます。
+3. Open sound shader file
+Drag and drop the \*.snd.glsl file to the main window, or
+Select File > Open Sound Shader from the menu and load the \*.snd.glsl file.
 
-4. シェーダのエディット  
-	MinimalGL はシェーダのエディット機能を持ちません。
-	シェーダのエディットはユーザーお手持ちのテキストエディタ等でシェーダファイルを直接書き換えることで行います。  
-	現在描画中（再生中）の glsl ファイルのタイムスタンプが更新されると、
-	直ちにリコンパイルされ描画結果（再生結果）に反映されます。
+4. Editing the shader
+MinimalGL does not have a shader editing function.
+Shader editing is done by directly rewriting the shader file with your own text editor.
+When the timestamp of the currently drawing (playing) glsl file is updated,
+It is immediately recompiled and reflected in the drawing result (playback result)
 
-5. 実行ファイルにエクスポート  
-	メニューから [File]→[Export Executable] を選択します。
-	Output file に生成する実行ファイル名を指定し OK をクリックします。
-	エクスポートに成功するとファイルサイズがメッセージボックスで表示されます。
+5. Export to executable
+Select File > Export Executable from the menu.
+Specify the executable file name to be generated in Output file and click OK.
+If the export is successful, the file size will be displayed in a message box.
 
 6. minify  
-	ファイルサイズが 4096 バイト未満になっていない場合、ファイルサイズ削減作業（minify）を行います。  
-	実行ファイルエクスポート時に同時に生成される minify されたシェーダコード（\*.inl ファイル）や
-	圧縮結果のレポート（\*.crinkler_report.html）等を参考に、シェーダコードを短くしていきます。  
-	実行ファイルエクスポート時の設定を調整したり、
-	描画設定（[Setup]→[Render Settings]）から無駄な機能を off にすることでもファイルサイズを削減できます。
+	If the file size is not less than 4096 bytes, file size reduction work (minify) is performed.
+The minified shader code (\*.inl file) generated at the same time when the executable file is exported,
+Shorten the shader code by referring to the compression result report (\*.crinkler_report.html).
+Adjust the settings when exporting the executable file,
+You can also reduce the file size by turning off unnecessary functions from the drawing settings ([Setup] → [Render Settings]).
 
 7. 完成  
 	念のために nVidia AMD Intel 各社の GPU 環境で動作テストしてください。
@@ -74,68 +74,67 @@ MinimalGL を使った PC 4K Intro 作成の簡単な流れは以下のように
 
 # 機能一覧
 
-- シェーダよるグラフィクス描画  
-	画面全体に一枚の四角形ポリゴンを表示し、フラグメントシェーダにより描画を行います。
+-Graphics drawing by shader
+A single quadrilateral polygon is displayed on the entire screen and drawn by the fragment shader.
 
-- シェーダよるサウンド生成  
-	コンピュートシェーダによるサウンド生成を行います。
+- Sound generation by shader
+Sound generation by compute shader.
 
-- シェーダホットリロード  
-	シェーダファイルが更新されると直ちに自動リロードを行います。  
-	ライブコーディング用途を想定した、経過時間をリセットせずにリロードするモードも利用可能です（メニューから [Setup]→[Preference Settings] を選択）。
+- shader hot reload
+Automatically reloads shader files as soon as they are updated.
+A mode that reloads without resetting the elapsed time is also available for live coding applications (select [Setup] → [Preference Settings] from the menu).
 
-- 実行ファイルエクスポート  
-	現在のグラフィクス及びサウンドの内容を実行ファイルにエクスポートします。  
-	shader_minifier (https://github.com/laurentlb/Shader_Minifier) によるシェーダコード minify、
-	および crinkler (http://www.crinkler.net/) による実行ファイル圧縮が適用されます。
+- Executable export
+Exports the current graphics and sound content to an executable file.
+shader code minify with shader_minifier (https://github.com/laurentlb/Shader_Minifier),
+and executable file compression by crinkler (http://www.crinkler.net/) is applied.
 
-- プロジェクトファイルエクスポート/インポート  
-	現在の状態（現在のシェーダファイル名、カメラの位置、描画設定、エクスポート設定等々）をプロジェクトファイルにエクスポートします。
-	プロジェクトファイルをインポートすることで状態を復元できます。
+- Project file export/import
+Export the current state (current shader file name, camera position, drawing settings, export settings, etc.) to a project file.
+You can restore the state by importing the project file.
 
-- スクリーンショットキャプチャ  
-	Unorm8 RGBA フォーマットの png ファイルとしてスクリーンショットをキャプチャします。
+- screenshot capture
+Capture screenshots as png files in Unorm8 RGBA format.
 
-- カメラコントロール  
-	マウスによるカメラ操作機能が利用可能です（利用するかはオプショナル）。
+- camera control
+You can use the camera operation function with a mouse (use is optional).
 
-- キューブマップキャプチャ  
-	カメラコントロールを利用している場合、
-	現在のカメラ位置から見える全方位の状態をキューブマップとして FP32 RGBA フォーマットの dds ファイルにキャプチャできます。
+- Cubemap capture
+If you are using camera control,
+You can capture the omnidirectional state seen from the current camera position as a cubemap to a dds file in FP32 RGBA format.
 
-- サウンドキャプチャ  
-	サウンド生成結果を float 2ch 形式の wav ファイルに保存します。
+- sound capture
+Save the sound generation result to wav file in float 2ch format.
 
-- 連番画像保存  
-	グラフィクス生成結果を Unorm8 RGBA フォーマットの連番 png ファイルとして保存します。
+- Save image sequence
+Save the graphics generation result as a sequential png file in Unorm8 RGBA format.
 
-- ユーザーテクスチャ  
-	任意の画像ファイル（現状 png と dds のみ対応）をテクスチャとして利用できます。
-	テクスチャは最大 4 つまで登録可能です。なおこの機能はエクスポートされた exe 上では利用できません。
+- User texture
+Any image file (currently only png and dds are supported) can be used as a texture.
+Up to 4 textures can be registered. Note that this feature is not available on exported exes.
 
-- 一時停止、スロー再生/スロー巻き戻し、早送り/巻き戻し  
-
-
-# グラフィクス周り機能一覧
-
-- バックバッファテクスチャの利用  
-	前回フレームの描画結果をテクスチャとして利用できます。
-
-- マルチプルレンダーターゲット (MRT)  
-	MRT4 まで対応します。バックバッファテクスチャも MRT 枚数分利用できます。
-
-- ミップマップ生成  
-	バックバッファテクスチャをミップマップ化します。
-
-- LDR/HDR レンダリング  
-	LDR (Unorm8 RGBA) および HDR (FP16 FP32 RGBA) でのレンダリングに対応します。
+- Pause, slow play/slow rewind, fast forward/rewind
 
 
-# twigl のシェーダの実行ファイル化
+# List of functions related to graphics
 
-https://twigl.app/ の geeker_300_es もしくは geeker_MRT で作成したシェーダは、MinimalGL 上に移植することで、実行ファイルにエクスポートできます。  
-詳細は examples 以下の、twigl 互換サンプルを参照してください。  
+- Use of backbuffer texture
+The drawing result of the previous frame can be used as a texture.
 
+- Multiple Render Targets (MRT)
+Supports up to MRT4. Backbuffer textures can also be used for the number of MRTs.
+
+- mipmap generation
+Mipmap the backbuffer texture.
+
+- LDR/HDR rendering
+Supports rendering in LDR (Unorm8 RGBA) and HDR (FP16 FP32 RGBA).
+
+
+# convert twigl shader to executable file
+
+Shaders created with geeker_300_es or geeker_MRT from https://twigl.app/ can be ported to MinimalGL and exported to an executable file.
+See the twigl compatible example under examples for details.
 
 # トラブルシューティング
 
