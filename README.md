@@ -68,11 +68,11 @@ Shorten the shader code by referring to the compression result report (\*.crinkl
 Adjust the settings when exporting the executable file,
 You can also reduce the file size by turning off unnecessary functions from the drawing settings ([Setup] → [Render Settings]).
 
-7. 完成  
-	念のために nVidia AMD Intel 各社の GPU 環境で動作テストしてください。
+7.Complete  
+Just in case, please test the operation in the GPU environment of nVidia AMD Intel companies.
 
 
-# 機能一覧
+# Functions list
 
 -Graphics drawing by shader
 A single quadrilateral polygon is displayed on the entire screen and drawn by the fragment shader.
